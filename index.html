@@ -24,20 +24,15 @@
             });
         </script>
         <script>
-        AFRAME.registerComponent("navclick", {
-      schema: {
-        url: {
-          default: ""
-        }
-      },
-      init: function() {
-        var data = this.data;
-        var el = this.el;
-        el.addEventListener("click", () => {
-            window.open(data.url, "_blank");
+            AFRAME.registerComponent("navclick", {
+                init: function() {
+                    var data = this.data;
+                    var el = this.el;
+                    el.addEventListener("click", () => {
+                    window.open(data.url, "_blank");
+                });
+            }
         });
-      }
-    });
     </script>
     </head>
 
