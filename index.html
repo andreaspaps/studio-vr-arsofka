@@ -23,6 +23,22 @@
                 },
             });
         </script>
+        <script>
+        AFRAME.registerComponent("navclick", {
+      schema: {
+        url: {
+          default: ""
+        }
+      },
+      init: function() {
+        var data = this.data;
+        var el = this.el;
+        el.addEventListener("click", () => {
+            window.open(data.url, "_blank");
+        });
+      }
+    });
+    </script>
     </head>
 
     <body style="margin: 0; overflow: hidden;">
@@ -39,14 +55,14 @@
                     src="assets/asset.mp4"
                     preload="auto"
                     response-type="arraybuffer"
-                    loop="true"
                     crossorigin
                     webkit-playsinline
                     autoplay
+                    loop="true"
                     playsinline
                 ></video>
             </a-assets>
-
+            <a-image src="assets/web.png" scale = "0.25 0.25 0.25" position="1 0 0" rotation="-90 0 0" navclick="url: https://www.oculus.com/experiences/quest/3719350301435548/"></a-image>
             <a-marker
                 type="pattern"
                 preset="custom"
