@@ -25,15 +25,19 @@
             });
         </script>
         <script>
-            AFRAME.registerComponent('navclick', {
+            AFRAME.registerComponent('markerhandler', {
                 init: function() {
-                    var data = this.data;
-                    var el = this.el;
-                    el.addEventListener("click", () => {
+                    const animatedMarker = document.querySelector("#animated-marker");
+                    const aEntity = document.querySelector("#animated-model");
+
+                    // every click, we open website :)
+                    animatedMarker.addEventListener('click', function(ev, target){
+            const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
+            if (aEntity && intersectedElement === aEntity) {
                     window.open(data.url, "_blank");
-                    });
-                }
-            });
+                    }
+                });
+            }});
         </script>
     </head>
 
@@ -58,8 +62,10 @@
                     loop
                     playsinline
                 ></video>
+                <a-image id="animated-model" src="assets/web.png" class="icon"/></a-image>
             </a-assets>
             <a-marker
+                markerhandler
                 type="pattern"
                 preset="custom"
                 url="assets/marker.patt"
@@ -71,7 +77,7 @@
                 raycaster="objects: .clickable"
                 emitevents="true"
                 cursor="fuse: false; rayOrigin: mouse;"
-                id="markerA"
+                id="animated-marker"
             >
                 <a-video
                     src="#vid"
@@ -80,7 +86,7 @@
                     rotation="-90 0 0"
                     class="clickable"
                 ></a-video>
-                <a-image src="assets/web.png" scale = "0.3 0.3 0.3" position="1 0.2 0" rotation="-90 0 0" class="clickable" navclick="url: https://www.oculus.com/experiences/quest/3719350301435548"></a-image>
+                <a-image src="#animated-model" scale = "0.3 0.3 0.3" position="1 0.2 0" rotation="-90 0 0" class="clickable" navclick="url: https://www.oculus.com/experiences/quest/3719350301435548"></a-image>
             </a-marker>
 
             <a-entity camera></a-entity>
