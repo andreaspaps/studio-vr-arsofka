@@ -23,15 +23,6 @@
                 },
             });
         </script>
-        <script>
-        const ytButton = document.querySelector("#yt-button");
-        AFRAME.registerComponent('clickhandler', {
-        init: function() {
-            ytButton.el.addEventListener('click', () => {
-                window.open("https://www.youtube.com/watch?v=HfNA16Prs2k", '_blank');
-            });
-         }});
-        </script>
         </head>
 
     <body style="margin: 0; overflow: hidden;">
@@ -54,7 +45,6 @@
                     loop
                     playsinline
                 ></video>
-                <img id="icon-yt" src="./assets/yt.png" />
             </a-assets>
             <a-marker
                 type="pattern"
@@ -77,10 +67,6 @@
                     rotation="-90 0 0"
                     class="clickable"
                 ></a-video>
-                
-                <a-image visible=false id="yt-button" class="clickable" src="#icon-yt" position="-0.42 -0.4 0" height="0.15" width="0.15"
-                animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
-                ></a-image>
                 
             </a-marker>
 
