@@ -1,4 +1,4 @@
-const video = document.getElementById('video');
+const video = document.getElementById('arjs-video');
 const button = document.getElementById('button');
 const select = document.getElementById('select');
 let currentStream;
